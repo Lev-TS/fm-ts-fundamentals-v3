@@ -50,7 +50,8 @@
     
     //
 
-    // discriminated unions (this requires tags like error, success and such. THis can be used with switch statements)
+    // discriminated unions using tagged union types (this requires tags like error, success and such. This can be 
+    // used with switch statements)
         if (outcome[0] === "error" ) {
             outcome[1].message
             outcome[1].name
