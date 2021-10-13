@@ -53,4 +53,52 @@
         const d = new MyDateConstructor();
 
     //
+
+    //function overloads
+
+        //  this is not good because we allowed too many possibilities for val
+            type FormSubmitHandler = (data: FormData) => void;
+            type MessageHandler = (evt: MessageEvent) => void;
+
+            function handleMainEvent_1(
+                elem: HTMLFormElement | HTMLIFrameElement, 
+                handler: FormSubmitHandler | MessageHandler
+            ) {};
+
+            const myFrame_1 = document.getElementsByTagName("iframe")[0];
+
+            handleMainEvent_1(myFrame_1, (val) => {}) // type of cb is any
+
+            // we are allowing too many possibilities, e.g. using a HTMLIFrameElement with FormSubmitHandler, which
+            // doesn't make any sense. We can address this using function overloads
+                
+                function handleMainEvent( // first head (type) of a functuin
+                    elem: HTMLFormElement,
+					handler: FormSubmitHandler
+				): void
+                function handleMainEvent( // second head (type) of a function
+					elem: HTMLIFrameElement,
+					handler: MessageHandler
+                ): void
+                function handleMainEvent( // implementation of a function should include all possible heads
+                    elem: HTMLFormElement | HTMLIFrameElement, 
+                    handler: FormSubmitHandler | MessageHandler
+                ) { }; 
+
+                const myFrame = document.getElementsByTagName('iframe')[0];
+                const myForm = document.getElementsByTagName('form')[0];
+
+                // since the first arg is myFrame, TS understand that we are using the second head of the function and 
+                // expects the type of cb to be MessageHandler
+                handleMainEvent(myFrame, (val) => {}) 
+
+                // myForm -> first head -> type of cb is FormSubmitHandler 
+                handleMainEvent(myForm, (val) => {})  
+
+            //
+
+        //
+
+    //
+
 //

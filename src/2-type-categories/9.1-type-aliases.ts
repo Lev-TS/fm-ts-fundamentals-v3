@@ -19,6 +19,7 @@
 
 // type aliases can clean up code
 	import { UserInfoOutcome } from './9.2-type-aliases';
+	
 	function maybeGetUserInfo(): UserInfoOutcome {
 		if (Math.random() > 0.5) {
 			return ['success', { name: 'Levan', email: 'lev.tsu@gmail.com' }];
