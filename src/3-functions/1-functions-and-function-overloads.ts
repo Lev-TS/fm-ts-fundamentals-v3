@@ -1,6 +1,6 @@
 // Callable types
     
-    // this are the same 
+    // these are the same 
         interface TwoNumberCalcTypeInterface {
             (c: number, y: number): number
         }
