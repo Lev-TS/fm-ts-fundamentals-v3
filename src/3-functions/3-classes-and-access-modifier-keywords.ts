@@ -29,9 +29,9 @@
 
     // access modifiers keywords
 
-        // "public": everyon can access (this is default)
-        // "protexted": ths instance itself and subclasses can access
-        // "private": only this instance itseld can access
+        // "public": everyone can access (this is default)
+        // "protected": ths instance itself and subclasses can access
+        // "private": only this instance itself can access
 
         class BetterCar {
             public make: string

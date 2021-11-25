@@ -59,7 +59,7 @@
         } else if (myVehicle instanceof SmallCar) {
             myVehicle.drive()
         } else {
-            // and throwing it in// and throwing it in the unreachable clause
+            // and throwing it in the unreachable clause
             throw new UnreachableError(myVehicle, `Unexpected vehicle type: ${myVehicle}`) 
         }
 
